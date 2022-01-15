@@ -1,0 +1,20 @@
+{
+  "configurations": {
+    "Launch": {
+      "adapter": "debugpy",
+      "filetypes": [ "python" ],
+      "configuration": {
+        "type": "python",
+        "python": "/opt/anaconda3/bin/python",
+        "request": "launch",
+        "module": "proxy",
+        "cwd": "${workspaceRoot}",
+        "console": "externalTerminal",
+        "stopOnEntry": true,
+        "autoReload": {
+            "enable": true
+        }
+      }
+    }
+  }
+}

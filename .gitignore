@@ -26,6 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+tags
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -130,3 +131,7 @@ dmypy.json
 
 # Editor configurations
 .vscode/
+
+.DS_Store
+
+certs/

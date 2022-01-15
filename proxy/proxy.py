@@ -2,18 +2,29 @@
 
 import sys
 import types
+import signal
 
 from .server import ProxyServer
+from .tcp_server import TcpServer
+
+server = None
+
+def signal_handler(signal_num, frame):
+    print('receive signal:', signal_num)
+    server.close()
+    sys.exit(0)
 
 
-def parse_arguments():
-    port = int(sys.argv[1])
-    conf = types.SimpleNamespace(port=port)
-    return conf
+signal.signal(signal.SIGHUP, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGABRT, signal_handler)
+
+
 
 
 def run():
-    conf = parse_arguments()
-    server = ProxyServer(conf)
-    server.forever_run()
+    global server
+    server = TcpServer('127.0.0.1', 8899)
+    server.run_forever()
 
